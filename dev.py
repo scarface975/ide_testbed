@@ -174,7 +174,16 @@ try:
                 try:
                     driver.get('http://localhost:{}/index.html'.format(port))
                 except Exception as error:
-                    print("Could not reload URL: {}".format(error))
+                    try:
+                        options = selenium.webdriver.ChromeOptions()
+                        driver = selenium.webdriver.Remote(
+                            command_executor='http://127.0.0.1:4444/wd/hub',
+                            options=options,
+                            desired_capabilities=dict())
+                        driver.get('http://localhost:{}/index.html'.format(port))
+                    except Exception as e:
+                        driver = None
+                        print('Could not reload URL')
             else:
                 pass
         except RuntimeError:
