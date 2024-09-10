@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+// Color overrides for Bulma colors
+$info: #2d72fe;
+
+// Note: the order of these imports is important
+@import "node_modules/bulma/sass/utilities/_all.sass";
+@import "node_modules/bulma/sass/base/_all.sass";
+@import "node_modules/bulma/sass/elements/_all.sass";
+@import "node_modules/bulma/sass/form/_all.sass";
+@import "node_modules/bulma/sass/components/_all.sass";
+@import "node_modules/bulma/sass/grid/columns.sass";
+@import "node_modules/bulma/sass/helpers/_all.sass";
+@import "node_modules/bulma/sass/layout/_all.sass";
+
+@each $name, $shade in $shades {
+    .has-fill-#{$name} {
+        fill: $shade
+    }
+}
+
+@each $name, $pair in $colors {
+    $color: nth($pair, 1);
+    $color-invert: nth($pair, 2);
+    &.has-fill-#{$name} {
+        fill: $color;
+        @if length($pair)>=4 {
+            $color-light: nth($pair, 3);
+            $color-dark: nth($pair, 4);
+            &-light {
+                fill: $color-light;
+            }
+            &-dark {
+                fill: $color-dark;
+            }
+        }
+    }
+}
+
+// Override the Bulma link style
+a {
+    color: #4a4a4a;
+    cursor: pointer;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.cm-scroller {
+    overflow: auto
+}
+
+.cm-gutter {
+    background-color: $white
+}
+
+.cm-gutters {
+    border-right: 0px !important
+}

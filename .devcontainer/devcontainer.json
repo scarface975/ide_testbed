@@ -1,0 +1,15 @@
+{
+   "name": "ide",
+   "build": { "dockerfile": "Dockerfile" },
+   "customizations": {
+	   "vscode": {
+		   "extensions": [
+            "rust-lang.rust-analyzer"
+	   	]
+	   }
+   },
+   "remoteUser": "developer",
+   "runArgs": [
+      "--network=host"
+   ]
+}

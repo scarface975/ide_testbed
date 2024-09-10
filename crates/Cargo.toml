@@ -1,0 +1,15 @@
+[workspace]
+resolver = "2"
+members = [
+    "frontend"
+]
+
+default-members = [
+    "frontend"
+]
+
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = "s"  # 3 => fast, s/z => small
+
