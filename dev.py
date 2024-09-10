@@ -82,7 +82,7 @@ def build():
         'npx', 'rspack', 'build',
         '--entry', '{}/{}.js'.format(artifact_path, 'frontend'),
         '--output-path', dist_path,
-        '--mode', 'production'
+        '--mode', 'development'
     ]
     rspack_proc = subprocess.Popen(rspack_args, cwd=build_path)
     rspack_proc.wait()
